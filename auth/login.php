@@ -41,7 +41,7 @@ include "../includes/header.php";
         formData.append("email", email);
         formData.append("password", password);
 
-        var addUderUrl = "http://localhost/tutorials/niit/ikorodu/batch-c/authentication/ajax_loginUser.php";
+        var addUderUrl = "http://localhost/tutorials/niit/ikorodu/projects/eduvibes/auth/ajax_loginUser.php";
 
         fetch(addUderUrl, {
                 method: 'POST',

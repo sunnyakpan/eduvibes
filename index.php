@@ -22,6 +22,12 @@ $blogs = $blog->getAll();
             </div>
         </div>
         <div class="blog_cat_list">
+        <div class="category-box active">
+                <a href="<?php echo getRoute('blog_categories', ['slug' => 'all']) ?>">
+
+                    All
+                </a>
+            </div>
             <?php foreach ($categories as $cat) : ?>
                 <div class="category-box">
                     <a href="<?php echo getRoute('blog_categories', ['slug' => $cat['slug']]) ?>">

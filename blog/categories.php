@@ -32,17 +32,23 @@ $blogs = $blog->getBlogByCategoryId($catId);
             </div>
         </div>
         <div class="blog_cat_list">
+            <div class="category-box">
+                <a href="<?php echo getRoute('blog_categories', ['slug' => 'all']) ?>">
+
+                    All
+                </a>
+            </div>
             <?php foreach ($categories as $cat) : ?>
                 <div class="<?php echo $cat['id'] == $post['id'] ? 'category-box active' : 'category-box'; ?>">
                     <a href="<?php echo getRoute('blog_categories', ['slug' => $cat['slug']]) ?>">
-                        
+
                         <?php echo $cat['title'] ?>
                     </a>
                 </div>
             <?php endforeach; ?>
-                    
-            
-            
+
+
+
         </div>
     </div>
     <div class="main-content">
@@ -53,23 +59,24 @@ $blogs = $blog->getBlogByCategoryId($catId);
                 <p><?php echo substr($blog['description'], 0, 150) . '...' ?></p>
                 <a href="<?php echo getRoute('blog_details', ['id' => $blog['id']]) ?>">Read More</a>
             </div>
-            
+
 
         <?php endforeach; ?>
-      
-    
-    
-    
-    
+
+
+
+
+
     </div>
 </section>
 
 
 
- 
+
 
 <?php
 include "../includes/footer.php";
 ?>
 </body>
+
 </html>

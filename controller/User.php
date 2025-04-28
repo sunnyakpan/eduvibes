@@ -34,9 +34,20 @@ class User
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
+      if($user["role"]== "admin"){
+        $baseUrl = "http://localhost/tutorials/niit/ikorodu/projects/eduvibes/admin/";
+        $dashboardUrl = $baseUrl. "dashboard.php";
+      }else{
+        $baseUrl = "http://localhost/tutorials/niit/ikorodu/projects/eduvibes/user/";
+        $dashboardUrl = $baseUrl. "dashboard.php";
+      }
       $_SESSION['user_data'] = [
         'id' => $user['id'],
         'name' => $user['name'],
+        'email' => $user['email'],
+        'baseUrl' => $baseUrl,
+        'dashboardUrl' => $dashboardUrl,
+        'role' => $user['role'],
         'profile_image' => $user['profile_image']
       ];
       return true;

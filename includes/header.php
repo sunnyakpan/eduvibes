@@ -54,9 +54,14 @@ function getRoute($name, $params = []) {
     <nav class="navbar">
         <ul>
             <li class="active"><a href="<?php echo getRoute("home"); ?>">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Settings</a></li>
+            <?php if (!isset($_SESSION['user_data'])){ ?>
+                <li><a href="<?php echo getRoute("login"); ?>">Login</a></li>
+                <li><a href="<?php echo getRoute("register"); ?>">Register</a></li>
+            <?php } else { ?>
+            <li><a href="<?php echo $_SESSION['user_data']["dashboardUrl"]; ?>">Profile</a></li>
+    
             <li><a href="<?php echo getRoute('logout') ?>">Logout</a></li>
+            <?php } ?>
         </ul>
 </header>
     

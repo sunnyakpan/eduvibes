@@ -16,6 +16,18 @@ class Category {
         $stmt = $this->db->conn->query("SELECT * FROM categories WHERE id IN (SELECT DISTINCT category_id FROM blogs) ORDER BY id DESC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    // get categories with number of blogs
+    public function getCategoriesWithBlogCount() {
+        $stmt = $this->db->conn->query("
+            SELECT c.*, COUNT(b.id) as blog_count 
+            FROM categories c 
+            LEFT JOIN blogs b ON c.id = b.category_id 
+            GROUP BY c.id 
+            ORDER BY c.id DESC
+        ");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function getBlogById($BlogId) {
         $stmt = $this->db->conn->prepare("SELECT * FROM categories WHERE id = ?");
